@@ -1,0 +1,25 @@
+{
+  "name": "rsvp-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pward725/rsvp-chrome-extension.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pward725/rsvp-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/Pward725/rsvp-chrome-extension#readme",
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jsdom": "^28.1.0"
+  }
+}

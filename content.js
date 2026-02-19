@@ -33,8 +33,19 @@
     });
   }
 
+  function ensureFont() {
+    if (!document.querySelector('#rsvp-cinzel-font')) {
+      const link = document.createElement('link');
+      link.id = 'rsvp-cinzel-font';
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap';
+      document.head.appendChild(link);
+    }
+  }
+
   function createOverlay() {
     removeOverlay();
+    ensureFont();
 
     const host = document.createElement('div');
     host.id = 'rsvp-speed-reader-host';
@@ -192,15 +203,17 @@
     }
   }
 
+  // ORP logic — kept in sync with lib/core.js
   function getORPIndex(word) {
-    // Optimal Recognition Point: ~30% into the word, min index 0
     const len = word.length;
+    if (len <= 0) return 0;
     if (len <= 1) return 0;
     if (len <= 3) return 1;
     return Math.floor(len * 0.3);
   }
 
   function renderWordWithORP(word) {
+    if (!word || word.length === 0) return '';
     const i = getORPIndex(word);
     const before = word.substring(0, i);
     const pivot = word[i];
@@ -232,8 +245,6 @@
 
   // CSS will be injected inline since we're in shadow DOM
   const CSS_TEXT = `
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
-
 :host { all: initial; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
