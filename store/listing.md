@@ -18,7 +18,7 @@ rsvprdr turns any text on the web into a rapid serial visual presentation (RSVP)
 3. **Read** at your chosen speed in a clean overlay
 
 ### Features
-- ⚡ **Adjustable WPM** — from leisurely 150 to blazing 800+ words per minute
+- ⚡ **Adjustable WPM** — from leisurely 100 to blazing 1000 words per minute
 - 🎯 **ORP Highlighting** — the optimal recognition point of each word is highlighted in red, so your eye locks on instantly
 - ⌨️ **Keyboard Shortcuts** — play/pause, speed up, slow down, skip forward/back — all without touching your mouse
 - 🎨 **Minimal Overlay** — reads on top of the page, no tab switching, no distractions
