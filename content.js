@@ -11,6 +11,10 @@
   let wordEl, counterEl, progressBar, playBtn;
 
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === 'ping') {
+      sendResponse({ pong: true });
+      return;
+    }
     if (message.action === 'startRSVP' && message.text) {
       startReader(message.text.trim());
     }

@@ -3,7 +3,7 @@
   "name": "RSVP Speed Reader",
   "version": "1.0.0",
   "description": "Speed read any text using Rapid Serial Visual Presentation (RSVP)",
-  "permissions": ["contextMenus", "storage", "activeTab"],
+  "permissions": ["contextMenus", "storage", "activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
