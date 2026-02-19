@@ -231,5 +231,191 @@
   }
 
   // CSS will be injected inline since we're in shadow DOM
-  const CSS_TEXT = `:host { all: initial; } * { margin: 0; padding: 0; box-sizing: border-box; } .rsvp-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 15, 19, 0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2147483647; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #e0e0e0; backdrop-filter: blur(8px); animation: rsvp-fade-in 0.2s ease-out; } @keyframes rsvp-fade-in { from { opacity: 0; } to { opacity: 1; } } .rsvp-close-btn { position: absolute; top: 24px; right: 32px; background: none; border: none; color: #888; font-size: 28px; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: all 0.15s; } .rsvp-close-btn:hover { color: #fff; background: rgba(108, 92, 231, 0.2); } .rsvp-word-container { display: flex; align-items: center; justify-content: center; min-height: 120px; width: 80%; max-width: 800px; } .rsvp-word { font-size: 64px; font-weight: 700; color: #ffffff; text-align: center; transition: opacity 0.05s; user-select: none; line-height: 1.2; } .rsvp-word.rsvp-paused-label { font-size: 24px; color: #6c5ce7; font-weight: 500; } .rsvp-pivot { color: #ff4757; } .rsvp-before, .rsvp-after { color: #ffffff; } .rsvp-controls { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 40px; width: 80%; max-width: 500px; } .rsvp-counter { font-size: 14px; color: #888; letter-spacing: 0.5px; } .rsvp-progress-track { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 2px; overflow: hidden; cursor: pointer; } .rsvp-progress-bar { height: 100%; background: #6c5ce7; border-radius: 2px; transition: width 0.1s linear; width: 0%; } .rsvp-buttons { display: flex; align-items: center; gap: 12px; } .rsvp-btn { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.08); color: #ccc; width: 44px; height: 44px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.15s; } .rsvp-btn:hover { background: rgba(108, 92, 231, 0.2); border-color: rgba(108, 92, 231, 0.4); color: #fff; } .rsvp-btn.rsvp-play-btn { width: 56px; height: 56px; border-radius: 50%; font-size: 22px; background: #6c5ce7; border-color: #6c5ce7; color: #fff; } .rsvp-btn.rsvp-play-btn:hover { background: #7c6ff0; border-color: #7c6ff0; } .rsvp-wpm-container { display: flex; align-items: center; gap: 12px; margin-top: 8px; } .rsvp-wpm-label { font-size: 13px; color: #888; min-width: 70px; text-align: center; } .rsvp-wpm-slider { -webkit-appearance: none; appearance: none; width: 200px; height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 2px; outline: none; } .rsvp-wpm-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #6c5ce7; cursor: pointer; transition: transform 0.1s; } .rsvp-wpm-slider::-webkit-slider-thumb:hover { transform: scale(1.2); } .rsvp-wpm-slider::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #6c5ce7; cursor: pointer; border: none; } .rsvp-shortcuts { position: absolute; bottom: 24px; font-size: 12px; color: #555; text-align: center; line-height: 1.8; } .rsvp-shortcuts kbd { display: inline-block; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; padding: 1px 6px; font-family: inherit; font-size: 11px; color: #888; } `;
+  const CSS_TEXT = `
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+
+:host { all: initial; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.rsvp-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a12 50%, #050508 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 2147483647;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  color: #f0e6ff;
+  backdrop-filter: blur(12px);
+  animation: rsvp-fade-in 0.4s ease-out;
+  overflow: hidden;
+}
+
+/* Sacred geometry background */
+.rsvp-overlay::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  width: 600px; height: 600px;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 50% 50%, transparent 29%, #8b5cf620 30%, transparent 31%),
+    radial-gradient(circle at 25% 50%, transparent 29%, #8b5cf615 30%, transparent 31%),
+    radial-gradient(circle at 75% 50%, transparent 29%, #8b5cf615 30%, transparent 31%),
+    radial-gradient(circle at 37.5% 28%, transparent 29%, #8b5cf612 30%, transparent 31%),
+    radial-gradient(circle at 62.5% 28%, transparent 29%, #8b5cf612 30%, transparent 31%),
+    radial-gradient(circle at 37.5% 72%, transparent 29%, #8b5cf612 30%, transparent 31%),
+    radial-gradient(circle at 62.5% 72%, transparent 29%, #8b5cf612 30%, transparent 31%);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: rsvp-rotate-slow 120s linear infinite;
+}
+
+/* Outer ring glow */
+.rsvp-overlay::after {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  width: 500px; height: 500px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #d946ef30;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #d946ef20, 0 0 60px #8b5cf615, inset 0 0 30px #d946ef10;
+  pointer-events: none;
+  animation: rsvp-pulse-ring 4s ease-in-out infinite;
+}
+
+@keyframes rsvp-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rsvp-rotate-slow { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes rsvp-pulse-ring { 0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.02); } }
+
+.rsvp-close-btn {
+  position: absolute; top: 24px; right: 32px;
+  background: none; border: none; color: #6b5b8a;
+  font-size: 28px; cursor: pointer; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; transition: all 0.2s; z-index: 10;
+}
+.rsvp-close-btn:hover { color: #d946ef; background: rgba(139, 92, 246, 0.15); }
+
+.rsvp-word-container {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 140px; width: 80%; max-width: 800px;
+  position: relative; z-index: 2;
+}
+
+.rsvp-word {
+  font-size: 68px; font-weight: 700;
+  color: #f0e6ff;
+  text-align: center; transition: opacity 0.05s;
+  user-select: none; line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px #8b5cf640, 0 0 60px #4c1d9530;
+}
+
+.rsvp-word.rsvp-paused-label {
+  font-size: 24px; color: #8b5cf6; font-weight: 500;
+  text-shadow: 0 0 15px #8b5cf650;
+}
+
+.rsvp-pivot {
+  color: #d946ef;
+  text-shadow: 0 0 12px #d946ef80, 0 0 30px #d946ef40;
+}
+.rsvp-before, .rsvp-after { color: #f0e6ff; }
+
+.rsvp-controls {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 20px; margin-top: 40px; width: 80%; max-width: 500px;
+  position: relative; z-index: 2;
+}
+
+.rsvp-counter {
+  font-size: 13px; color: #6b5b8a;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  font-weight: 500;
+}
+
+.rsvp-progress-track {
+  width: 100%; height: 6px;
+  background: #2d1b4e; border-radius: 3px;
+  overflow: hidden; cursor: pointer;
+  box-shadow: inset 0 0 8px #0a0a1280;
+}
+
+.rsvp-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef);
+  border-radius: 3px;
+  transition: width 0.1s linear; width: 0%;
+  box-shadow: 0 0 10px #8b5cf660;
+}
+
+.rsvp-buttons { display: flex; align-items: center; gap: 14px; }
+
+.rsvp-btn {
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: #c4b5fd; width: 46px; height: 46px;
+  border-radius: 12px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: all 0.2s;
+}
+.rsvp-btn:hover {
+  background: rgba(217, 70, 239, 0.15);
+  border-color: rgba(217, 70, 239, 0.4);
+  color: #f0e6ff;
+  box-shadow: 0 0 15px #d946ef30;
+}
+
+.rsvp-btn.rsvp-play-btn {
+  width: 58px; height: 58px; border-radius: 50%;
+  font-size: 22px;
+  background: linear-gradient(135deg, #8b5cf6, #d946ef);
+  border: none; color: #fff;
+  box-shadow: 0 0 20px #8b5cf650, 0 0 40px #d946ef30;
+}
+.rsvp-btn.rsvp-play-btn:hover {
+  background: linear-gradient(135deg, #9d6ff8, #e060fb);
+  box-shadow: 0 0 30px #8b5cf670, 0 0 60px #d946ef40;
+}
+
+.rsvp-wpm-container {
+  display: flex; align-items: center; gap: 12px; margin-top: 8px;
+}
+
+.rsvp-wpm-label {
+  font-size: 12px; color: #6b5b8a; min-width: 80px;
+  text-align: center; letter-spacing: 0.1em; font-weight: 500;
+}
+
+.rsvp-wpm-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 200px; height: 4px;
+  background: #2d1b4e; border-radius: 2px; outline: none;
+}
+.rsvp-wpm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #d946ef; cursor: pointer;
+  transition: transform 0.1s;
+  box-shadow: 0 0 10px #d946ef60;
+}
+.rsvp-wpm-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+.rsvp-wpm-slider::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #d946ef; cursor: pointer; border: none;
+}
+
+.rsvp-shortcuts {
+  position: absolute; bottom: 24px;
+  font-size: 11px; color: #4c3d6e;
+  text-align: center; line-height: 1.8;
+  letter-spacing: 0.05em; z-index: 2;
+}
+.rsvp-shortcuts kbd {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 4px; padding: 1px 6px;
+  font-family: inherit; font-size: 10px;
+  color: #8b5cf6;
+}
+`;
 })();
